@@ -18,7 +18,11 @@ require("./models/db")
 //Cross Origin Resource Sharing
 var app = express();
 
-app.use(cors());
+app.use(cors(
+  [
+    {origin: "https://backend-production-3eb6.up.railway.app"}
+  ]
+));
 app.use((req,res,next)=>{
   res.setHeader("Access-Control-Allow-Origin","*");
   res.setHeader("Access-Control-Allow-Headers",
