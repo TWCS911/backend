@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var barangsRouter = require('./routes/barangs');
 var transaksisRouter = require('./routes/transaksis');
 const cors = require("cors");
+const mongoose = require("mongoose");
 
 // const mongoose = require("mongoose");
 require("./models/db")
@@ -17,7 +18,7 @@ require("./models/db")
 //Cross Origin Resource Sharing
 var app = express();
 
-
+app.use(cors());
 app.use((req,res,next)=>{
   res.setHeader("Access-Control-Allow-Origin","*");
   res.setHeader("Access-Control-Allow-Headers",
@@ -32,9 +33,6 @@ app.use((req,res,next)=>{
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(cors({
-  origin: "http://localhost:4200"
-}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
